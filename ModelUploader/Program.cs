@@ -73,7 +73,8 @@ namespace ModelUploader
             Log.Ok("Authenticating...");
             try
             {
-                var credential = new InteractiveBrowserCredential(tenantId, clientId);
+                // var credential = new InteractiveBrowserCredential(tenantId, clientId);
+                var credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions { ExcludeSharedTokenCacheCredential = true });
                 client = new DigitalTwinsClient(new Uri(adtInstanceUrl), credential);
                 // force authentication to happen here
                 try
